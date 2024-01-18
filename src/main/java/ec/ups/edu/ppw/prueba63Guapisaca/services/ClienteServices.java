@@ -26,11 +26,11 @@ public class ClienteServices {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	//@Produces("application/json")
-	public Response leer(@QueryParam("dni") String cedula, @QueryParam("nombre") String nombre,
-			@QueryParam("direccion") String direccion, @QueryParam("deuda") double deuda) {
+	public Response leer(@QueryParam("dni") String cedula, @QueryParam("nombre") String nombre, 
+			 @QueryParam("fecha") String fecha, 
+			 @QueryParam("deuda") int deuda) {
 		try{
-			System.out.println("cedula " +  cedula + " nom=" + nombre + " Direccion"
-					 + direccion + " Deuda: " + deuda);
+			System.out.println("cedula " +  cedula + " nom=" + nombre + " fecha=" + fecha + " Deuda: " + deuda);
 			Cliente cli = gClientes.getClientePorCedula(cedula);
 			return Response.ok(cli).build();
 		}catch (Exception e) {
@@ -46,11 +46,11 @@ public class ClienteServices {
 	@Path("{dni}/{nombre}")
 	@Produces(MediaType.APPLICATION_JSON)
 	//@Produces("application/json")
-	public Response leer2(@PathParam("dni") String cedula, @PathParam("nombre") String nombre,
-			@QueryParam("direccion") String direccion, @QueryParam("deuda") double deuda) {
+	public Response leer2(@PathParam("dni") String cedula, @PathParam("nombre") String nombre, 
+			@QueryParam("fecha") String fecha,
+			@QueryParam("deuda") int deuda) {
 		try{
-			System.out.println("cedula " +  cedula + " nom=" + nombre + " Direccion"
-					 + direccion + " Deuda: " + deuda);
+			System.out.println("cedula " +  cedula + " nom=" + nombre + " fecha=" + fecha + " Deuda: " + deuda);
 			Cliente cli = gClientes.getClientePorCedula(cedula);
 			return Response.ok(cli).build();
 		}catch (Exception e) {
